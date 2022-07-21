@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name}} -- MaBoutique{% endblock %}
+
+{% block content %}
+
+    <link href="{{ '../assets/css/bootstrap.min.css' }}" rel="stylesheet">
+    <link href="{{ '../assets/css/maBoutique.css' }}" rel="stylesheet">
+    <link href="{{ '../assets/css/carousel.css' }}" rel="stylesheet">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
+        </div>
+        <div class="col-md-7 my-auto">
+            <h3> <strong>{{ product.name }}</strong></h3>
+            <p>{{ product.subtitle }}</p>
+            <span class="product-page-price">{{ product.price / 100 | number_format(2) }}$</span>
+            <hr>
+            <p>{{ product.description }}</p>
+            <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="btn btn-outline-primary">Ajouter au panier</a>
+
+        </div>
+    </div>
+    <hr>
+
+    <div class="text-center">
+        <h2>Nos meilleures ventes</h2>
+        <p>Découvrez nos meilleurs produits</p>
+    </div>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-3">
+                {% include 'product/single_product.html.twig' %}
+            </div>
+        {% endfor %}
+    </div><!-- /.row -->
+
+{% endblock %}

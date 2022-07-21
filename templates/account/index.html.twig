@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte -- MaBoutique{% endblock %}
+
+{% block content %}
+    <h1>Mon compte</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <small><a href="/admin">Vous etes un administrateur, acceder au backoffice?</a><br></small>
+    {% endif %}
+
+    Bienvenue dans votre espace personel {{ app.user.firstname}} merci de fournir les informations manquantes.
+    <br>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="account-item text-center">
+                <img src="{{ asset('assets/img/mot-de-passe.png') }}" alt="Modifier mon mot de passe"><br>
+                <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="account-item text-center">
+                <img src="{{ asset('assets/img/home-address.png') }}" alt="Gerer mes adresses"><br>
+                <a href="{{ path('account_address') }}">Gerer mes adresses</a><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="account-item text-center">
+                <img src="{{ asset('assets/img/purchase.png') }}" alt="Mes commandes"><br>
+                <a href="{{ path('account_order') }}">Mes commandes</a><br>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <br>
+
+{% endblock %}

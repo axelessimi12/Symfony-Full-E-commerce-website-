@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de la commande-- MaBoutique{% endblock %}
+
+{% block content %}
+    <link href="{{ '../../assets/css/bootstrap.min.css' }}" rel="stylesheet">
+    <link href="{{ '../../assets/css/maBoutique.css' }}" rel="stylesheet">
+    <link href="{{ '../../assets/css/carousel.css' }}" rel="stylesheet">
+
+    <h2>Confirmation de commande</h2>
+    <hr>
+    <p>
+    Bonjour <strong>{{ order.user.firstname | capitalize }} {{ order.user.lastname | upper }} </strong>, <br><br>
+    Nous vous remercions pour votre commande de réference <strong>{{ order.reference }}</strong>.<br>
+    Une confirmation vient de vous etre envoyée par email à l'adresse <strong>{{ order.user.email }}</strong>.
+    <hr>
+    Votre commande sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse suivante: <br>
+    <strong>{{ order.delivery|raw }}</strong>
+    <hr>
+    Pour suivre votre commande rendez-vous dans votre <a href="{{ path('account_order') }}">compte</a>
+
+   </p>
+
+{% endblock %}

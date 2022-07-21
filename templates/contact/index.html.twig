@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter -- MaBoutique{% endblock %}
+{% block content %}
+    <h2>Nous contacter</h2>
+    <p>N'hésitez pas a nous contacter, notre équipe vous répondra dans les meilleurs délais.</p>
+    {% for message in app.flashes('notice')  %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-8">{{ form(form) }}</div>
+        <div class="col-md-4">
+            <strong>MaBoutique</strong>
+            <hr>
+            6 99 63 69 99 <br>
+            15e rue avenue soudanaise akwa <br>
+            contact@Maboutique.com <br>
+        </div>
+
+    </div>
+
+{% endblock %}
